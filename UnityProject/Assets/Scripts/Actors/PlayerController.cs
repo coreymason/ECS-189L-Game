@@ -4,6 +4,17 @@ using Zenject;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
+    private string moveState = "walking";
+    [SerializeField] private float Speed = 1.0f;
+    //Serialized private fields flag a warning as of v2018.3. 
+    //This pragma disables the warning in this one case.
+    #pragma warning disable 0649
+
+    private float ModifiedSpeed = 1.0f;
+    private float DashSpeed = 5.0f;
+    private float dashTimer = 0.1f;
+    private float timer = 0.0f;
+    private Vector3 MovementDirection; 
     private InputManager _inputManager;
     private Player _player;
 
@@ -36,15 +47,29 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        Vector2 moveVelocity = new Vector2(_inputManager.Horizontal, _inputManager.Vertical);
-        
-        // Reconcile keyboard and controller diagonals
-        if (_inputManager.Source == InputManager.InputSource.MKB && moveVelocity.x != 0 && moveVelocity.y != 0)
+        if (moveState == "walking")
         {
-            moveVelocity *= 0.7f;
+            this.ModifiedSpeed = this.Speed;
+            this.MovementDirection = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0.0f);
+            this.gameObject.transform.Translate(this.MovementDirection * Time.deltaTime * this.ModifiedSpeed);
+
+            if (Input.GetKeyDown("space")) //dash
+            {
+                this.ModifiedSpeed = this.DashSpeed;
+                moveState = "dashing";
+            }
         }
-        
-        moveVelocity *= baseSpeed * Time.fixedDeltaTime;
-        _rigidbody2D.velocity = Vector3.SmoothDamp(_rigidbody2D.velocity, moveVelocity, ref _velocity, velocitySmoothing);
+        else if (moveState == "dashing")
+        {
+            this.ModifiedSpeed = this.DashSpeed;
+            this.gameObject.transform.Translate(this.MovementDirection * Time.deltaTime * this.ModifiedSpeed);
+            timer += Time.deltaTime;
+            if (timer >= dashTimer)
+            {
+                moveState = "walking";
+                timer = 0.0f; 
+            }
+        }
+
     }
 }
