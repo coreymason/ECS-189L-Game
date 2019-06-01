@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ee846549-51f7-46ba-a275-3bd2f2edf449" name="Default Changelist" comment="" />
+    <list default="true" id="ee846549-51f7-46ba-a275-3bd2f2edf449" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.UnityProject/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UnityProject/.idea/indexLayout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Audio.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Zenject/OptionalExtras/ReflectionBaking/Zenject-ReflectionBaking.csproj.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Zenject/OptionalExtras/Signals/Zenject-Signals.csproj.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tilemaps.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI.meta" beforeDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -11,10 +20,19 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Assets/Scripts/PlayerController.cs">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/Actors/PlayerController.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="29" column="5" lean-forward="true" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
+            <state relative-caret-position="-140">
+              <folding>
+                <marker date="1559430242914" expanded="true" signature="6:33" ph="..." />
+                <marker date="1559430242914" expanded="true" signature="120:1326" ph="{...}" />
+                <marker date="1559430242914" expanded="true" signature="492:568" ph="{...}" />
+                <marker date="1559430242914" expanded="true" signature="594:658" ph="{...}" />
+                <marker date="1559430242914" expanded="true" signature="690:774" ph="{...}" />
+                <marker date="1559430242914" expanded="true" signature="728:768" ph="{...}" />
+                <marker date="1559430242914" expanded="true" signature="799:1324" ph="{...}" />
+                <marker date="1559430242914" expanded="true" signature="1075:1129" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -25,6 +43,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Actors/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectFrameBounds">
@@ -39,9 +58,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AssemblyExplorer" />
-      <pane id="SolutionExplorer">
-        <option name="show-all-files" value="false" />
+      <pane id="UnityExplorer">
+        <option name="show-hidden-items" value="false" />
+        <option name="show-project-names" value="true" />
       </pane>
       <pane id="FileSystemExplorer">
         <subPane>
@@ -54,23 +73,9 @@
           <select />
         </subPane>
       </pane>
-      <pane id="UnityExplorer">
-        <subPane>
-          <expand>
-            <path>
-              <item name="" type="e068e287:UnityExplorerRootNode" />
-              <item name="Assets" type="8711f2a6:AssetsRoot" />
-            </path>
-            <path>
-              <item name="" type="e068e287:UnityExplorerRootNode" />
-              <item name="Assets" type="8711f2a6:AssetsRoot" />
-              <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-        <option name="show-hidden-items" value="false" />
-        <option name="show-project-names" value="true" />
+      <pane id="AssemblyExplorer" />
+      <pane id="SolutionExplorer">
+        <option name="show-all-files" value="false" />
       </pane>
     </panes>
   </component>
@@ -126,7 +131,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="377000" />
+    <option name="totallyTimeSpent" value="381000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -140,7 +145,7 @@
   <component name="ToolWindowManager">
     <frame x="121" y="80" width="1400" height="1000" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25701624" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26070902" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Capture Tool" order="3" />
