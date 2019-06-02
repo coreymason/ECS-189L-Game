@@ -470,5 +470,15 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 1700357943381560557, guid: 6ae6045c429422b4e945d2a82fdc4f4e,
+        type: 3}
+      propertyPath: m_Lens.OrthographicSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8603832343354702371, guid: 6ae6045c429422b4e945d2a82fdc4f4e,
+        type: 3}
+      propertyPath: orthographic size
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ae6045c429422b4e945d2a82fdc4f4e, type: 3}

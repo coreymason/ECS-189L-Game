@@ -9,11 +9,16 @@ public class PlayerController : MonoBehaviour
     //Serialized private fields flag a warning as of v2018.3. 
     //This pragma disables the warning in this one case.
     #pragma warning disable 0649
-
+    
+    //actual speed of the player
     private float ModifiedSpeed = 1.0f;
+    //Speed of the actual dash
     private float DashSpeed = 5.0f;
+    //length in time of the dash
     private float dashTimer = 0.1f;
+    //just a timer to compare to the dashTimer
     private float timer = 0.0f;
+    
     private Vector3 MovementDirection; 
     private InputManager _inputManager;
     private Player _player;
@@ -55,6 +60,7 @@ public class PlayerController : MonoBehaviour
         {
             this.ModifiedSpeed = this.Speed;
             this.MovementDirection = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0.0f);
+            Debug.Log(Input.GetAxis("Horizontal"));
             this.gameObject.transform.Translate(this.MovementDirection * Time.deltaTime * this.ModifiedSpeed);
 
             if (Input.GetKeyDown("space")) //dash

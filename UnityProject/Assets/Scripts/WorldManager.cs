@@ -18,4 +18,11 @@ public class WorldManager : MonoBehaviour
     {
         _playerFactory.Create();
     }
+
+    //For now if the user presses the escape key, he/she can leave the game
+    void Update()
+    {
+        if (Input.GetKey("escape"))
+            Application.Quit();
+    }
 }
