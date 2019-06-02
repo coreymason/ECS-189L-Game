@@ -34,6 +34,10 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        //where you place the main character art
+        var player_art = this.GetComponent<SpriteRenderer> ();
+        var basic_char_sprite = Resources.Load<Sprite>("basic_char");
+        player_art.sprite = basic_char_sprite;
         _rigidbody2D = GetComponent<Rigidbody2D>();
     }
 

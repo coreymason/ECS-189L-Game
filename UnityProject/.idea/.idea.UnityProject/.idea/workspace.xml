@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ee846549-51f7-46ba-a275-3bd2f2edf449" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.UnityProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UnityProject/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Actors/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Actors/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs.meta" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,21 +16,21 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/Actors/PlayerController.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-38">
-              <caret line="35" column="5" lean-forward="true" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+            <state relative-caret-position="390">
+              <caret line="39" column="46" selection-start-line="39" selection-start-column="46" selection-end-line="39" selection-end-column="46" />
               <folding>
-                <marker date="1559431596762" expanded="true" signature="6:33" ph="..." />
-                <marker date="1559431596762" expanded="true" signature="120:2130" ph="{...}" />
-                <marker date="1559431596762" expanded="true" signature="218:333" ph="/* Serialized private fields flag a warning as of v2018.3. ... */" />
-                <marker date="1559431596762" expanded="true" signature="921:997" ph="{...}" />
-                <marker date="1559431596762" expanded="true" signature="1023:1087" ph="{...}" />
-                <marker date="1559431596762" expanded="true" signature="1119:1203" ph="{...}" />
-                <marker date="1559431596762" expanded="true" signature="1157:1197" ph="{...}" />
-                <marker date="1559431596762" expanded="true" signature="1228:2128" ph="{...}" />
-                <marker date="1559431596762" expanded="true" signature="1270:1729" ph="{...}" />
-                <marker date="1559431596762" expanded="true" signature="1599:1719" ph="{...}" />
-                <marker date="1559431596762" expanded="true" signature="1770:2121" ph="{...}" />
-                <marker date="1559431596762" expanded="true" signature="2013:2111" ph="{...}" />
+                <marker date="1559440983838" expanded="true" signature="6:33" ph="..." />
+                <marker date="1559440983838" expanded="true" signature="120:2359" ph="{...}" />
+                <marker date="1559440983838" expanded="true" signature="218:333" ph="/* Serialized private fields flag a warning as of v2018.3. ... */" />
+                <marker date="1559440983838" expanded="true" signature="921:997" ph="{...}" />
+                <marker date="1559440983838" expanded="true" signature="1023:1316" ph="{...}" />
+                <marker date="1559440983838" expanded="true" signature="1348:1432" ph="{...}" />
+                <marker date="1559440983838" expanded="true" signature="1386:1426" ph="{...}" />
+                <marker date="1559440983838" expanded="true" signature="1457:2357" ph="{...}" />
+                <marker date="1559440983838" expanded="true" signature="1499:1958" ph="{...}" />
+                <marker date="1559440983838" expanded="true" signature="1828:1948" ph="{...}" />
+                <marker date="1559440983838" expanded="true" signature="1999:2350" ph="{...}" />
+                <marker date="1559440983838" expanded="true" signature="2242:2340" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -92,6 +90,9 @@
     <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -135,12 +136,12 @@
       <updated>1558390473101</updated>
       <workItem from="1558390475419" duration="37000" />
       <workItem from="1558390534627" duration="310000" />
-      <workItem from="1559431231881" duration="402000" />
+      <workItem from="1559431231881" duration="1411000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="783000" />
+    <option name="totallyTimeSpent" value="1792000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -174,13 +175,13 @@
       <window_info anchor="bottom" id="Database Changes" order="11" />
       <window_info anchor="bottom" id="Unit Tests" order="12" />
       <window_info anchor="bottom" id="Terminal" order="13" />
-      <window_info active="true" anchor="bottom" id="Event Log" order="14" side_tool="true" visible="true" weight="0.3295063" />
+      <window_info anchor="bottom" id="Event Log" order="14" side_tool="true" visible="true" weight="0.3295063" />
       <window_info anchor="bottom" id="Unity" order="15" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
-      <window_info anchor="right" id="Errors In Solution" order="4" />
+      <window_info active="true" anchor="right" id="Errors In Solution" order="4" visible="true" weight="0.329718" />
       <window_info anchor="right" id="Database" order="5" />
       <window_info anchor="right" id="Unit Tests Coverage" order="6" />
     </layout>
@@ -210,21 +211,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/Actors/PlayerController.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-38">
-          <caret line="35" column="5" lean-forward="true" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+        <state relative-caret-position="390">
+          <caret line="39" column="46" selection-start-line="39" selection-start-column="46" selection-end-line="39" selection-end-column="46" />
           <folding>
-            <marker date="1559431596762" expanded="true" signature="6:33" ph="..." />
-            <marker date="1559431596762" expanded="true" signature="120:2130" ph="{...}" />
-            <marker date="1559431596762" expanded="true" signature="218:333" ph="/* Serialized private fields flag a warning as of v2018.3. ... */" />
-            <marker date="1559431596762" expanded="true" signature="921:997" ph="{...}" />
-            <marker date="1559431596762" expanded="true" signature="1023:1087" ph="{...}" />
-            <marker date="1559431596762" expanded="true" signature="1119:1203" ph="{...}" />
-            <marker date="1559431596762" expanded="true" signature="1157:1197" ph="{...}" />
-            <marker date="1559431596762" expanded="true" signature="1228:2128" ph="{...}" />
-            <marker date="1559431596762" expanded="true" signature="1270:1729" ph="{...}" />
-            <marker date="1559431596762" expanded="true" signature="1599:1719" ph="{...}" />
-            <marker date="1559431596762" expanded="true" signature="1770:2121" ph="{...}" />
-            <marker date="1559431596762" expanded="true" signature="2013:2111" ph="{...}" />
+            <marker date="1559440983838" expanded="true" signature="6:33" ph="..." />
+            <marker date="1559440983838" expanded="true" signature="120:2359" ph="{...}" />
+            <marker date="1559440983838" expanded="true" signature="218:333" ph="/* Serialized private fields flag a warning as of v2018.3. ... */" />
+            <marker date="1559440983838" expanded="true" signature="921:997" ph="{...}" />
+            <marker date="1559440983838" expanded="true" signature="1023:1316" ph="{...}" />
+            <marker date="1559440983838" expanded="true" signature="1348:1432" ph="{...}" />
+            <marker date="1559440983838" expanded="true" signature="1386:1426" ph="{...}" />
+            <marker date="1559440983838" expanded="true" signature="1457:2357" ph="{...}" />
+            <marker date="1559440983838" expanded="true" signature="1499:1958" ph="{...}" />
+            <marker date="1559440983838" expanded="true" signature="1828:1948" ph="{...}" />
+            <marker date="1559440983838" expanded="true" signature="1999:2350" ph="{...}" />
+            <marker date="1559440983838" expanded="true" signature="2242:2340" ph="{...}" />
           </folding>
         </state>
       </provider>
