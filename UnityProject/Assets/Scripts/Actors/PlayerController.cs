@@ -22,14 +22,15 @@ public class PlayerController : MonoBehaviour
     private Vector3 MovementDirection; 
     private InputManager _inputManager;
     private Player _player;
+    
 
     [Range(0, 1f)] [SerializeField] private float velocitySmoothing = 0.05f;
     [SerializeField] private float baseSpeed = 20f;
 
     private Rigidbody2D _rigidbody2D;
     private Vector3 _velocity = Vector3.zero;
-
-
+    
+    
     [Inject]
     
     private void Init(Player player, InputManager inputManager)
