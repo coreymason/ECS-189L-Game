@@ -13,6 +13,9 @@ public class Player : MonoBehaviour, IHealth
 
     private GameObject Crosshair;
     private GameObject player; 
+    private InputManager _inputManager;
+
+    Vector3 DistVector;
     void Start()
     {
         Health = maxHealth;
@@ -44,6 +47,7 @@ public class Player : MonoBehaviour, IHealth
     private void FixedUpdate()
     {
         CrossHairTrack();
+
     }
     
     /*
@@ -69,14 +73,13 @@ public class Player : MonoBehaviour, IHealth
         
         float t = mousePos.x - PlayerPos.x;
         float u = mousePos.y - PlayerPos.y;
-        player = this.transform.Find("PlayerController").gameObject;
+        
 
         var theta = Mathf.Atan(u / t);
 
         float crossX = crossDist * Mathf.Cos(theta);
         float crossY = crossDist * Mathf.Sin(theta);
         
-        Vector3 DistVector;
         if (t >= 0)
         {
             DistVector = new Vector3(PlayerPos.x + crossX, PlayerPos.y + crossY, 0.0f);
