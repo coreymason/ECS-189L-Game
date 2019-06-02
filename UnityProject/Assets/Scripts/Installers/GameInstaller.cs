@@ -5,6 +5,7 @@ public class GameInstaller : MonoInstaller
 {
     [SerializeField] public GameObject playerPrefab;
     [SerializeField] public GameObject enemyPrefab;
+    [SerializeField] public GameObject crosshairPrefab;
     
     public override void InstallBindings()
     {
@@ -17,5 +18,7 @@ public class GameInstaller : MonoInstaller
             .ByNewContextPrefab(playerPrefab).UnderTransformGroup("Players");
 //        Container.BindFactory<Enemy, Enemy.Factory>().FromSubContainerResolve()
 //            .ByNewContextPrefab(enemyPrefab).UnderTransformGroup("EnemyManager");
+        Container.BindFactory<Crosshair, Crosshair.Factory>().FromSubContainerResolve()
+            .ByNewContextPrefab(crosshairPrefab).UnderTransformGroup("Crosshairs");
     }
 }

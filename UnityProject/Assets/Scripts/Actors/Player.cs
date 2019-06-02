@@ -24,7 +24,9 @@ public class Player : MonoBehaviour, IHealth
         Health = Mathf.Min(maxHealth, Health + amount);
     }
     
+    
     public class Factory : PlaceholderFactory<Player>
     {
     }
+    
 }

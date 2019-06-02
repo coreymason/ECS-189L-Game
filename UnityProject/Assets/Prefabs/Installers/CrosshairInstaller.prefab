@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1883775347270739896
+--- !u!1 &7526755247830077351
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1883775347270739902}
-  - component: {fileID: 1883775347270739897}
-  m_Layer: 0
-  m_Name: GameInstaller
+  - component: {fileID: 3498094857207063873}
+  - component: {fileID: 7602771373412315568}
+  m_Layer: 8
+  m_Name: CrosshairInstaller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1883775347270739902
+--- !u!4 &3498094857207063873
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1883775347270739896}
+  m_GameObject: {fileID: 7526755247830077351}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,20 +31,15 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1883775347270739897
+--- !u!114 &7602771373412315568
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1883775347270739896}
+  m_GameObject: {fileID: 7526755247830077351}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2172c2236300de64ea38c2c5b1cb8c02, type: 3}
+  m_Script: {fileID: 11500000, guid: 93a25f03a26e40f4a18d559b0e7492ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 2175793889850934388, guid: 33407bd929d60b3429b464f314d9b9b4,
-    type: 3}
-  enemyPrefab: {fileID: 0}
-  crosshairPrefab: {fileID: 6897013438507150865, guid: 78fc6ebf4fd53358d9a6da4e5f1347c7,
-    type: 3}

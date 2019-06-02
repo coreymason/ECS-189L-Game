@@ -28,15 +28,22 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D _rigidbody2D;
     private Vector3 _velocity = Vector3.zero;
-    
-    
+
+
     [Inject]
+    
     private void Init(Player player, InputManager inputManager)
     {
         _inputManager = inputManager;
         _player = player;
+        _player.tag = "Player";
     }
 
+    public Vector3 GetPlayerPosition()
+    {
+        return this.transform.position;
+    }
+    
     private void Start()
     {
         //where you place the main character art
@@ -60,7 +67,6 @@ public class PlayerController : MonoBehaviour
         {
             this.ModifiedSpeed = this.Speed;
             this.MovementDirection = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0.0f);
-            Debug.Log(Input.GetAxis("Horizontal"));
             this.gameObject.transform.Translate(this.MovementDirection * Time.deltaTime * this.ModifiedSpeed);
 
             if (Input.GetKeyDown("space")) //dash
