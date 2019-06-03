@@ -12,7 +12,7 @@ public class Player : MonoBehaviour, IHealth
     private float crossDist = 0.5f; 
 
     private GameObject Crosshair;
-    private GameObject player; 
+    private GameObject player;
     private InputManager _inputManager;
 
     Vector3 DistVector;
@@ -47,24 +47,10 @@ public class Player : MonoBehaviour, IHealth
     private void FixedUpdate()
     {
         CrossHairTrack();
-
     }
     
-    /*
-    private void CrossHairTrack()
-    {
-        player = this.transform.Find("PlayerController").gameObject; 
-        Vector3 PlayerPos = player.transform.position; 
-        Vector3 mousePos = Input.mousePosition;
-        mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-        Vector3 DistVector = mousePos - PlayerPos;
-        DistVector.Normalize();
-        DistVector = new Vector3(DistVector.x * crossDist, DistVector.y * crossDist, DistVector.z * crossDist);
-        
-        Crosshair.transform.position = DistVector;
-    }
-    */
     
+    //Calculate location of crosshair
     private void CrossHairTrack()
     {
         Vector3 PlayerPos = player.transform.position; 
@@ -90,4 +76,6 @@ public class Player : MonoBehaviour, IHealth
         }
         Crosshair.transform.position = DistVector;
     }
+
+
 }

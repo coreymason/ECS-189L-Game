@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 using Zenject;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -22,6 +23,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 MovementDirection; 
     private InputManager _inputManager;
     private Player _player;
+
+    private Vector3 mousePos;
     
 
     [Range(0, 1f)] [SerializeField] private float velocitySmoothing = 0.05f;
@@ -29,8 +32,9 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D _rigidbody2D;
     private Vector3 _velocity = Vector3.zero;
-    
-    
+
+    public GameObject Arrow;
+
     [Inject]
     
     private void Init(Player player, InputManager inputManager)
@@ -43,6 +47,7 @@ public class PlayerController : MonoBehaviour
     public Vector3 GetPlayerPosition()
     {
         return this.transform.position;
+        
     }
     
     private void Start()
@@ -58,7 +63,11 @@ public class PlayerController : MonoBehaviour
     {
         if (_player.CanControl)
         {
+            
             Move();
+            mousePos = Input.mousePosition;
+            mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+            Fire(); 
         }
     }
 
@@ -87,6 +96,27 @@ public class PlayerController : MonoBehaviour
                 timer = 0.0f; 
             }
         }
+    }
 
+    private void Fire()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            float t = mousePos.x - this.transform.position.x;
+            float u = mousePos.y - this.transform.position.y;
+        
+
+            var theta = Mathf.Atan(u / t);
+            var degtheta = theta * Mathf.Rad2Deg;
+            if (t < 0)
+            {
+                degtheta = degtheta - 180;
+            }
+            
+            GameObject CurrentArrow = Instantiate(Arrow, GetPlayerPosition(), Quaternion.Euler(0, 0, degtheta));
+            Debug.Log("Here is the current player position");
+            Debug.Log(mousePos);
+        }
+        
     }
 }
