@@ -56,11 +56,13 @@ public class PlayerController : MonoBehaviour
     {
         if (_player.CanControl)
         {
-            
-            Move();
-            mousePos = Input.mousePosition;
-            mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-            Fire(); 
+                Move();
+                 
+                //mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+                // Debug.Log("x" + Input.GetAxis("Mouse X")); 
+                // Debug.Log("y" + mousePos.y); 
+
+                Fire(); 
         }
     }
 
@@ -69,10 +71,10 @@ public class PlayerController : MonoBehaviour
         if (_moveState == "walking")
         {
             modifiedSpeed = Speed;
-            _movementDirection = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0.0f);
+            _movementDirection = new Vector3(_inputManager.Horizontal, _inputManager.Vertical, 0.0f);
             gameObject.transform.Translate(_movementDirection * Time.deltaTime * modifiedSpeed);
 
-            if (Input.GetKeyDown("space")) //dash
+            if (_inputManager.Dash) //dash
             {
                 modifiedSpeed = dashSpeed;
                 _moveState = "dashing";
@@ -93,12 +95,11 @@ public class PlayerController : MonoBehaviour
 
     private void Fire()
     {
-        if (Input.GetMouseButtonDown(0))
+        mousePos = _inputManager.mousePos;  //new Vector3(_inputManager.FireHorizontal, _inputManager.FireVertical,0); 
+        if (_inputManager.Fire)
         {
-            var t = mousePos.x - transform.position.x;
-            var u = mousePos.y - transform.position.y;
-        
-
+            float t = mousePos.x - transform.position.x;
+            float u = mousePos.y - transform.position.y;
             var theta = Mathf.Atan(u / t);
             var degtheta = theta * Mathf.Rad2Deg;
             if (t < 0)

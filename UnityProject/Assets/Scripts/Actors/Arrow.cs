@@ -6,6 +6,7 @@ public class Arrow : MonoBehaviour
 {
     private Vector3 _mousePos;
     private Vector3 _shootDirection;
+    public GameObject Player;
 
     private void Awake()
     {
@@ -19,34 +20,34 @@ public class Arrow : MonoBehaviour
 
     private void Fly()
     {
-        var currentArrowRigidBody2D = gameObject.GetComponent<Rigidbody2D>();
-        currentArrowRigidBody2D.AddForce(_shootDirection * 200f);
+        Rigidbody2D CurrentArrowRigidbody2D = this.gameObject.GetComponent<Rigidbody2D>();
+        CurrentArrowRigidbody2D.AddForce(this.ShootDirection * 200f);
     }
     
     //makes sure all arrows have the same speed when its created
     private void EqualizationCreate()
     {
-        var PlayerPos = this.transform.position; 
+        Vector3 playerPos = this.transform.position; 
+        InputManager _inputManager = GameObject.Find("PlayerController").GetComponent<InputManager>();
         
-        _mousePos = Input.mousePosition;
-        _mousePos = Camera.main.ScreenToWorldPoint(_mousePos);
+        _mousePos = _inputManager.mousePos;
         
-        var t = _mousePos.x - PlayerPos.x;
-        var u = _mousePos.y - PlayerPos.y;
+        float t = _mousePos.x - playerPos.x;
+        float u = _mousePos.y - playerPos.y;
         
 
         var theta = Mathf.Atan(u / t);
 
-        var crossX = 0.1f * Mathf.Cos(theta);
-        var crossY = 0.1f * Mathf.Sin(theta);
+        float crossX = 0.1f * Mathf.Cos(theta);
+        float crossY = 0.1f * Mathf.Sin(theta);
         
         if (t >= 0)
         {
-            _shootDirection = new Vector3(PlayerPos.x + crossX, PlayerPos.y + crossY, 0.0f);
+            _shootDirection = new Vector3(playerPos.x + crossX, playerPos.y + crossY, 0.0f);
         }
         else
         {
-            _shootDirection = new Vector3(PlayerPos.x - crossX, PlayerPos.y - crossY, 0.0f);
+            _shootDirection = new Vector3(playerPos.x - crossX, playerPos.y - crossY, 0.0f);
         }
 
         _shootDirection -= transform.position; 

@@ -53,9 +53,9 @@ public class Player : MonoBehaviour, IHealth
     //Calculate location of crosshair
     private void CrossHairTrack()
     {
-        var PlayerPos = _player.transform.position; 
-        var mousePos = Input.mousePosition;
-        mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+        _inputManager = this.transform.Find("PlayerController").GetComponent<InputManager>();
+        Vector3 PlayerPos = player.transform.position; 
+        Vector3 mousePos = _inputManager.mousePos;
         
         var t = mousePos.x - PlayerPos.x;
         var u = mousePos.y - PlayerPos.y;
