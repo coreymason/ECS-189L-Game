@@ -5,7 +5,7 @@ using Zenject;
 public class WorldManager : MonoBehaviour
 {
     private Player.Factory _playerFactory;
-    public List<Player> _players;
+    private List<Player> _players;
 
     private Enemy.Factory _enemyFactory;
     private List<Enemy> _enemies;
