@@ -28,11 +28,13 @@ public class Arrow : MonoBehaviour
     private void EqualizationCreate()
     {
         Vector3 PlayerPos = this.transform.position; 
-        
-        mousePos = Input.mousePosition;
-        mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-        Debug.Log("Here is the mousePos here");
-        Debug.Log(mousePos);
+        InputManager _inputManager = GameObject.Find("PlayerController").GetComponent<InputManager>();
+
+        mousePos = _inputManager.mousePos; 
+        //new Vector3(_inputManager.FireHorizontal, _inputManager.FireVertical,0); 
+        // mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+        // Debug.Log("Here is the mousePos here");
+        // Debug.Log(mousePos);
         
         float t = mousePos.x - PlayerPos.x;
         float u = mousePos.y - PlayerPos.y;
