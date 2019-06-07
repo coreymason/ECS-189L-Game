@@ -1,101 +1,71 @@
 ﻿using UnityEngine;
-using UnityEngine.AI;
 using Zenject;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
-    private string _moveState = "walking";
-    [SerializeField] private float Speed = 1.0f;
-    //Serialized private fields flag a warning as of v2018.3. 
-    //This pragma disables the warning in this one case.
-    #pragma warning disable 0649
-    
-    //actual speed of the player
-    private float modifiedSpeed = 1.0f;
-    //Speed of the actual dash
-    private float dashSpeed = 5.0f;
-    //length in time of the dash
-    private float dashTimer = 0.1f;
-    //just a timer to compare to the dashTimer
-    private float timer;
-    
-    private Vector3 _movementDirection; 
     private InputManager _inputManager;
     private Player _player;
 
-    private Vector3 mousePos;
-
-
-    public GameObject Arrow;
-
-    [Inject]
+    [SerializeField] private GameObject arrow;
+    [SerializeField] private float moveSpeed = 1.0f;
+    [SerializeField] private float dashSpeed = 5.0f;
+    [SerializeField] private float dashTime = 0.1f;
     
-    private void Init(Player player, InputManager inputManager)
+    private string _moveState = "walking";
+    private Vector3 _movementDirection;
+    private float _timer;
+    
+    [Inject]
+    private void Init(InputManager inputManager, Player player)
     {
         _inputManager = inputManager;
         _player = player;
-        _player.tag = "Player";
-    }
-
-    private Vector3 GetPlayerPosition()
-    {
-        return transform.position;
-        
-    }
-    
-    private void Start()
-    {
-        //where you place the main character art
-        var player_art = GetComponent<SpriteRenderer> ();
-        var basic_char_sprite = Resources.Load<Sprite>("basic_char");
-        player_art.sprite = basic_char_sprite;
     }
 
     private void FixedUpdate()
     {
         if (_player.CanControl)
         {
-                Move();
-                 
-                //mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-                // Debug.Log("x" + Input.GetAxis("Mouse X")); 
-                // Debug.Log("y" + mousePos.y); 
-
-                Fire(); 
+            Move();
+            Fire();
         }
     }
 
+    // TODO: Fix state change bugs, explore the original velocity + smoothing method vs translate, fix MKB/controller bug as in the original
     private void Move()
     {
+        float actualSpeed;
+
         if (_moveState == "walking")
         {
-            modifiedSpeed = Speed;
+            actualSpeed = moveSpeed;
             _movementDirection = new Vector3(_inputManager.Horizontal, _inputManager.Vertical, 0.0f);
-            gameObject.transform.Translate(_movementDirection * Time.deltaTime * modifiedSpeed);
-
-            if (_inputManager.Dash) //dash
+            gameObject.transform.Translate(Time.deltaTime * actualSpeed * _movementDirection);
+            
+            if (_inputManager.Dash)
             {
-                modifiedSpeed = dashSpeed;
                 _moveState = "dashing";
             }
         }
         else if (_moveState == "dashing")
         {
-            modifiedSpeed = dashSpeed;
-            gameObject.transform.Translate(_movementDirection * Time.deltaTime * modifiedSpeed);
-            timer += Time.deltaTime;
-            if (timer >= dashTimer)
+            actualSpeed = dashSpeed;
+            gameObject.transform.Translate(Time.deltaTime * actualSpeed * _movementDirection);
+            _timer += Time.deltaTime;
+            
+            if (_timer >= dashTime)
             {
                 _moveState = "walking";
-                timer = 0.0f; 
+                _timer = 0.0f;
             }
         }
     }
 
+    // TODO: Use projectile factory
     private void Fire()
     {
-        mousePos = _inputManager.mousePos;  //new Vector3(_inputManager.FireHorizontal, _inputManager.FireVertical,0); 
+        Vector3 mousePos = _inputManager.FirePosition;
         if (_inputManager.Fire)
         {
             float t = mousePos.x - transform.position.x;
@@ -107,8 +77,7 @@ public class PlayerController : MonoBehaviour
                 degtheta -= 180;
             }
             
-            GameObject CurrentArrow = Instantiate(Arrow, GetPlayerPosition(), Quaternion.Euler(0, 0, degtheta));
+            GameObject currentArrow = Instantiate(arrow, transform.position, Quaternion.Euler(0, 0, degtheta));
         }
-        
     }
 }

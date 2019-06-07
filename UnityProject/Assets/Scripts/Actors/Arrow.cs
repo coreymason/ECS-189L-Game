@@ -1,7 +1,6 @@
 using UnityEngine;
-using UnityEngine.Experimental.PlayerLoop;
-using Zenject;
 
+// TODO: Refactor and decouple from player
 public class Arrow : MonoBehaviour
 {
     private Vector3 _mousePos;
@@ -21,7 +20,7 @@ public class Arrow : MonoBehaviour
     private void Fly()
     {
         Rigidbody2D CurrentArrowRigidbody2D = this.gameObject.GetComponent<Rigidbody2D>();
-        CurrentArrowRigidbody2D.AddForce(this.ShootDirection * 200f);
+        CurrentArrowRigidbody2D.AddForce(this._shootDirection * 200f);
     }
     
     //makes sure all arrows have the same speed when its created
@@ -30,7 +29,7 @@ public class Arrow : MonoBehaviour
         Vector3 playerPos = this.transform.position; 
         InputManager _inputManager = GameObject.Find("PlayerController").GetComponent<InputManager>();
         
-        _mousePos = _inputManager.mousePos;
+        _mousePos = _inputManager.FirePosition;
         
         float t = _mousePos.x - playerPos.x;
         float u = _mousePos.y - playerPos.y;
