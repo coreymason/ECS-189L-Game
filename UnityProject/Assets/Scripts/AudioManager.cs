@@ -1,14 +1,23 @@
-﻿using UnityEngine;
+﻿using UnityEngine.Audio;
+using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    public enum Sound
+    
+    // TODO: actually manage audio lol
+    
+    void Awake()
     {
         
     }
 
-    public enum Music
+    void Start()
     {
         
+    }
+
+    public void setVolume(float volume)
+    {
+        AudioListener.volume = volume;
     }
 }
