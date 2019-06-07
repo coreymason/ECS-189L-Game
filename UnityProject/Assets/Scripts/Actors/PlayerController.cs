@@ -7,23 +7,20 @@ public class PlayerController : MonoBehaviour
     private InputManager _inputManager;
     private Player _player;
 
-    [Range(0, 1f)] [SerializeField] private float velocitySmoothing = 0.05f;
-    [SerializeField] private float baseSpeed = 20f;
-
-    private Rigidbody2D _rigidbody2D;
-    private Vector3 _velocity = Vector3.zero;
+    [SerializeField] private GameObject arrow;
+    [SerializeField] private float moveSpeed = 1.0f;
+    [SerializeField] private float dashSpeed = 5.0f;
+    [SerializeField] private float dashTime = 0.1f;
     
+    private string _moveState = "walking";
+    private Vector3 _movementDirection;
+    private float _timer;
     
     [Inject]
-    private void Init(Player player, InputManager inputManager)
+    private void Init(InputManager inputManager, Player player)
     {
         _inputManager = inputManager;
         _player = player;
-    }
-
-    private void Start()
-    {
-        _rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
     private void FixedUpdate()
@@ -31,20 +28,56 @@ public class PlayerController : MonoBehaviour
         if (_player.CanControl)
         {
             Move();
+            Fire();
         }
     }
 
+    // TODO: Fix state change bugs, explore the original velocity + smoothing method vs translate, fix MKB/controller bug as in the original
     private void Move()
     {
-        Vector2 moveVelocity = new Vector2(_inputManager.Horizontal, _inputManager.Vertical);
-        
-        // Reconcile keyboard and controller diagonals
-        if (_inputManager.Source == InputManager.InputSource.MKB && moveVelocity.x != 0 && moveVelocity.y != 0)
+        float actualSpeed;
+
+        if (_moveState == "walking")
         {
-            moveVelocity *= 0.7f;
+            actualSpeed = moveSpeed;
+            _movementDirection = new Vector3(_inputManager.Horizontal, _inputManager.Vertical, 0.0f);
+            gameObject.transform.Translate(Time.deltaTime * actualSpeed * _movementDirection);
+            
+            if (_inputManager.Dash)
+            {
+                _moveState = "dashing";
+            }
         }
-        
-        moveVelocity *= baseSpeed * Time.fixedDeltaTime;
-        _rigidbody2D.velocity = Vector3.SmoothDamp(_rigidbody2D.velocity, moveVelocity, ref _velocity, velocitySmoothing);
+        else if (_moveState == "dashing")
+        {
+            actualSpeed = dashSpeed;
+            gameObject.transform.Translate(Time.deltaTime * actualSpeed * _movementDirection);
+            _timer += Time.deltaTime;
+            
+            if (_timer >= dashTime)
+            {
+                _moveState = "walking";
+                _timer = 0.0f;
+            }
+        }
+    }
+
+    // TODO: Use projectile factory
+    private void Fire()
+    {
+        Vector3 mousePos = _inputManager.FirePosition;
+        if (_inputManager.Fire)
+        {
+            float t = mousePos.x - transform.position.x;
+            float u = mousePos.y - transform.position.y;
+            var theta = Mathf.Atan(u / t);
+            var degtheta = theta * Mathf.Rad2Deg;
+            if (t < 0)
+            {
+                degtheta -= 180;
+            }
+            
+            GameObject currentArrow = Instantiate(arrow, transform.position, Quaternion.Euler(0, 0, degtheta));
+        }
     }
 }
