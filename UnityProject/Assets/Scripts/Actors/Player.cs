@@ -15,7 +15,6 @@ public class Player : MonoBehaviour, IHealth
     void Init(SignalBus signalBus)
     {
         _signalBus = signalBus;
-
     }
     
     void Start()

@@ -4,6 +4,7 @@ using Zenject;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
+    private SignalBus _signalBus;
     private InputManager _inputManager;
     private Player _player;
 
@@ -17,10 +18,16 @@ public class PlayerController : MonoBehaviour
     private float _timer;
     
     [Inject]
-    private void Init(InputManager inputManager, Player player)
+    private void Init(SignalBus signalBus, InputManager inputManager, Player player)
     {
+        _signalBus = signalBus;
         _inputManager = inputManager;
         _player = player;
+    }
+
+    private void Start()
+    {
+        _signalBus.Fire(new CameraFollowTargetSignal() {Target = gameObject});
     }
 
     private void FixedUpdate()

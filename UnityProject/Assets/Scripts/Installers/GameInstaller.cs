@@ -18,11 +18,18 @@ public class GameInstaller : MonoInstaller
 //        Container.BindFactory<Enemy, Enemy.Factory>().FromSubContainerResolve()
 //            .ByNewContextPrefab(enemyPrefab).UnderTransformGroup("WorldManager/EnemyManager");
 
-        Container.Bind<HealthCounterDisplay>().FromComponentInHierarchy().AsSingle();
 
         SignalBusInstaller.Install(Container);
+        
         Container.DeclareSignal<PlayerHealthSignal>();
+        Container.Bind<HealthCounterDisplay>().FromComponentInHierarchy().AsSingle();
         Container.BindSignal<PlayerHealthSignal>()
             .ToMethod<HealthCounterDisplay>(x => x.UpdateHealthText).FromResolve();
+        
+        Container.DeclareSignal<CameraFollowTargetSignal>();
+        Container.Bind<CameraRig>().FromComponentInHierarchy().AsSingle();
+        Container.BindSignal<CameraFollowTargetSignal>()
+            .ToMethod<CameraRig>(x => x.UpdateFollowTarget).FromResolve();
+
     }
 }
