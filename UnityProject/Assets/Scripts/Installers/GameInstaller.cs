@@ -5,7 +5,6 @@ public class GameInstaller : MonoInstaller
 {
     [SerializeField] public GameObject playerPrefab;
     [SerializeField] public GameObject enemyPrefab;
-    [SerializeField] public GameObject crosshairPrefab;
     
     public override void InstallBindings()
     {
