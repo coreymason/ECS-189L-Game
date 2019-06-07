@@ -73,6 +73,7 @@ public class PlayerController : MonoBehaviour
         Vector3 mousePos = _inputManager.FirePosition;
         if (_inputManager.Fire)
         {
+            animator.SetTrigger("is_fire");
             float t = mousePos.x - transform.position.x;
             float u = mousePos.y - transform.position.y;
             var theta = Mathf.Atan(u / t);
@@ -84,5 +85,6 @@ public class PlayerController : MonoBehaviour
             
             GameObject currentArrow = Instantiate(arrow, transform.position, Quaternion.Euler(0, 0, degtheta));
         }
+        
     }
 }
