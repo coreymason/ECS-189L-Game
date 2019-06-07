@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     private string _moveState = "walking";
     private Vector3 _movementDirection;
     private float _timer;
+    public Animator animator;
     
     [Inject]
     private void Init(SignalBus signalBus, InputManager inputManager, Player player)
@@ -43,10 +44,12 @@ public class PlayerController : MonoBehaviour
     private void Move()
     {
         float actualSpeed;
-
+        
         if (_moveState == "walking")
         {
             actualSpeed = moveSpeed;
+            animator.SetFloat("speed_front",actualSpeed*_inputManager.Vertical);
+            animator.SetFloat("speed_right",actualSpeed*_inputManager.Horizontal);
             _movementDirection = new Vector3(_inputManager.Horizontal, _inputManager.Vertical, 0.0f);
             gameObject.transform.Translate(Time.deltaTime * actualSpeed * _movementDirection);
             
@@ -58,6 +61,8 @@ public class PlayerController : MonoBehaviour
         else if (_moveState == "dashing")
         {
             actualSpeed = dashSpeed;
+            animator.SetFloat("speed_front",actualSpeed*_movementDirection.y);
+            animator.SetFloat("speed_right",actualSpeed*_movementDirection.x);
             gameObject.transform.Translate(Time.deltaTime * actualSpeed * _movementDirection);
             _timer += Time.deltaTime;
             
@@ -75,6 +80,7 @@ public class PlayerController : MonoBehaviour
         Vector3 mousePos = _inputManager.FirePosition;
         if (_inputManager.Fire)
         {
+            animator.SetTrigger("is_fire");
             float t = mousePos.x - transform.position.x;
             float u = mousePos.y - transform.position.y;
             var theta = Mathf.Atan(u / t);
@@ -86,5 +92,6 @@ public class PlayerController : MonoBehaviour
             
             GameObject currentArrow = Instantiate(arrow, transform.position, Quaternion.Euler(0, 0, degtheta));
         }
+        
     }
 }
