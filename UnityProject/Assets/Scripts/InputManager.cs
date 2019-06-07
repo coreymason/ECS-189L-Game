@@ -23,5 +23,10 @@ public class InputManager : MonoBehaviour
     {
         Horizontal = Input.GetAxisRaw("Horizontal");
         Vertical = Input.GetAxisRaw("Vertical"); 
+        
+        // TODO: Remove
+        if (Input.GetKey("escape")) {
+            Application.Quit();
+        }
     }
 }

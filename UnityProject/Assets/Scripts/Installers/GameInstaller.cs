@@ -4,7 +4,6 @@ using Zenject;
 public class GameInstaller : MonoInstaller
 {
     [SerializeField] public GameObject playerPrefab;
-    [SerializeField] public GameObject enemyPrefab;
     
     public override void InstallBindings()
     {
@@ -14,9 +13,8 @@ public class GameInstaller : MonoInstaller
 //        Container.Bind<Player>().FromComponentsInHierarchy().;
         
         Container.BindFactory<Player, Player.Factory>().FromSubContainerResolve()
-            .ByNewContextPrefab(playerPrefab).UnderTransformGroup("Players");
+            .ByNewContextPrefab(playerPrefab).UnderTransformGroup("WorldManager/Players");
 //        Container.BindFactory<Enemy, Enemy.Factory>().FromSubContainerResolve()
-//            .ByNewContextPrefab(enemyPrefab).UnderTransformGroup("EnemyManager");
-
+//            .ByNewContextPrefab(enemyPrefab).UnderTransformGroup("WorldManager/EnemyManager");
     }
 }
