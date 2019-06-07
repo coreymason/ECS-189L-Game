@@ -11,4 +11,9 @@ public class AudioManager : MonoBehaviour
     {
         
     }
+
+    public void setVolume(float volume)
+    {
+        
+    }
 }
