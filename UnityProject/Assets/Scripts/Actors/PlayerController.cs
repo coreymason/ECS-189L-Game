@@ -9,10 +9,13 @@ public class PlayerController : MonoBehaviour
     private Player _player;
 
     [SerializeField] private GameObject arrow;
-    [SerializeField] private float moveSpeed = 1.0f;
-    [SerializeField] private float dashSpeed = 5.0f;
-    [SerializeField] private float dashTime = 0.1f;
+    [SerializeField] private float moveSpeed = 2.0f;
+    [SerializeField] private float dashSpeed = 4.0f;
+    [SerializeField] private float dashTime = 0.05f;
     
+    private Rigidbody2D rb;
+
+    private Vector3 _velocity; 
     private string _moveState = "walking";
     private Vector3 _movementDirection;
     private float _timer;
@@ -27,7 +30,8 @@ public class PlayerController : MonoBehaviour
     }
 
     private void Start()
-    {
+    {    
+        rb = GetComponent<Rigidbody2D>();
         _signalBus.Fire(new CameraFollowTargetSignal() {Target = gameObject});
     }
 
@@ -44,14 +48,15 @@ public class PlayerController : MonoBehaviour
     private void Move()
     {
         float actualSpeed;
-        
+        Vector2 moveVelocity = new Vector2(_inputManager.Horizontal, _inputManager.Vertical);
         if (_moveState == "walking")
         {
             actualSpeed = moveSpeed;
             animator.SetFloat("speed_front",actualSpeed*_inputManager.Vertical);
             animator.SetFloat("speed_right",actualSpeed*_inputManager.Horizontal);
-            _movementDirection = new Vector3(_inputManager.Horizontal, _inputManager.Vertical, 0.0f);
-            gameObject.transform.Translate(Time.deltaTime * actualSpeed * _movementDirection);
+            _movementDirection = new Vector2(_inputManager.Horizontal, _inputManager.Vertical);
+            _velocity = _movementDirection * actualSpeed;
+            rb.velocity = _velocity;
             
             if (_inputManager.Dash)
             {
@@ -63,7 +68,9 @@ public class PlayerController : MonoBehaviour
             actualSpeed = dashSpeed;
             animator.SetFloat("speed_front",actualSpeed*_movementDirection.y);
             animator.SetFloat("speed_right",actualSpeed*_movementDirection.x);
-            gameObject.transform.Translate(Time.deltaTime * actualSpeed * _movementDirection);
+            _movementDirection = new Vector3(_inputManager.Horizontal, _inputManager.Vertical);
+            _velocity = _movementDirection * actualSpeed;
+            rb.velocity = _velocity;
             _timer += Time.deltaTime;
             
             if (_timer >= dashTime)
