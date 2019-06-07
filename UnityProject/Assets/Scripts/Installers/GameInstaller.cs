@@ -7,6 +7,7 @@ public class GameInstaller : MonoInstaller
     
     public override void InstallBindings()
     {
+        Container.Bind<AudioManager>().FromComponentInHierarchy().AsSingle();
         Container.Bind<WorldManager>().FromComponentInHierarchy().AsSingle();
         
 //        Container.Bind<Player>().FromComponentInHierarchy().WhenInjectedInto<PlayerController>();
@@ -16,5 +17,12 @@ public class GameInstaller : MonoInstaller
             .ByNewContextPrefab(playerPrefab).UnderTransformGroup("WorldManager/Players");
 //        Container.BindFactory<Enemy, Enemy.Factory>().FromSubContainerResolve()
 //            .ByNewContextPrefab(enemyPrefab).UnderTransformGroup("WorldManager/EnemyManager");
+
+        Container.Bind<HealthCounterDisplay>().FromComponentInHierarchy().AsSingle();
+
+        SignalBusInstaller.Install(Container);
+        Container.DeclareSignal<PlayerHealthSignal>();
+        Container.BindSignal<PlayerHealthSignal>()
+            .ToMethod<HealthCounterDisplay>(x => x.UpdateHealthText).FromResolve();
     }
 }
