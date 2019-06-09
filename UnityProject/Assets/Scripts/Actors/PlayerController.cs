@@ -13,9 +13,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float dashSpeed = 4.0f;
     [SerializeField] private float dashTime = 0.2f;
     [SerializeField] private float coolDown = 0.5f;
+    [Range(0, 1f)] [SerializeField] private float velocitySmoothing = 0.01f;
     
-    private Rigidbody2D rb;
-
+    private Rigidbody2D _rb;
     private Vector3 _velocity; 
     private string _moveState = "walking";
     private Vector3 _movementDirection;
@@ -34,7 +34,8 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {    
-        rb = GetComponent<Rigidbody2D>();
+        
+        _rb = GetComponent<Rigidbody2D>();
         _signalBus.Fire(new CameraFollowTargetSignal() {Target = gameObject});
     }
 
@@ -58,10 +59,18 @@ public class PlayerController : MonoBehaviour
             animator.SetFloat("speed_front",actualSpeed*_inputManager.Vertical);
             animator.SetFloat("speed_right",actualSpeed*_inputManager.Horizontal);
             _movementDirection = new Vector2(_inputManager.Horizontal, _inputManager.Vertical);
-            _movementDirection = _movementDirection.normalized;
-            _velocity = _movementDirection * actualSpeed;
-            rb.velocity = _velocity;
+            
+            //If character is moving diagonally, multiply the speed vector by 0.7. Else the character will move at the normal speed * sqrt 2
+            if (_movementDirection.x != 0 && _movementDirection.y != 0)
+            {
+                _movementDirection = new Vector2(_movementDirection.x * 0.7f, _movementDirection.y * 0.7f);
+            }
+            //Last MoveDirection is stored for the dash direction 
             _lastMoveDirection = _movementDirection;
+            
+            _movementDirection = _movementDirection * actualSpeed;
+            _rb.velocity = Vector3.SmoothDamp(_rb.velocity, _movementDirection, ref _velocity, velocitySmoothing);
+            
             _dashCoolDown += Time.deltaTime;
             if (_inputManager.Dash && _dashCoolDown >= coolDown)
             {
@@ -76,7 +85,7 @@ public class PlayerController : MonoBehaviour
             animator.SetFloat("speed_right",actualSpeed*_movementDirection.x);
             _movementDirection = new Vector3(_inputManager.Horizontal, _inputManager.Vertical);
             _velocity = _lastMoveDirection * actualSpeed;
-            rb.velocity = _velocity;
+            _rb.velocity = _velocity;
             _timer += Time.deltaTime;
             
             if (_timer >= dashTime)

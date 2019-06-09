@@ -222,6 +222,8 @@ MonoBehaviour:
   moveSpeed: 8
   dashSpeed: 20
   dashTime: 0.2
+  coolDown: 0.5
+  velocitySmoothing: 0
   animator: {fileID: 959793055830993522}
 --- !u!212 &4991579694659136002
 SpriteRenderer:
