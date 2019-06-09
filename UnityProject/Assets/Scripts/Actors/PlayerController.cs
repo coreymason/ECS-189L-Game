@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     private SignalBus _signalBus;
     private InputManager _inputManager;
     private Player _player;
+    private Projectile.Factory _projectileFactory;
 
     [SerializeField] private GameObject arrow;
     [SerializeField] private float moveSpeed = 2.0f;
@@ -25,11 +26,12 @@ public class PlayerController : MonoBehaviour
     public Animator animator;
     
     [Inject]
-    private void Init(SignalBus signalBus, InputManager inputManager, Player player)
+    private void Init(SignalBus signalBus, InputManager inputManager, Player player, Projectile.Factory projectileFactory)
     {
         _signalBus = signalBus;
         _inputManager = inputManager;
         _player = player;
+        _projectileFactory = projectileFactory;
     }
 
     private void Start()
@@ -109,8 +111,11 @@ public class PlayerController : MonoBehaviour
             {
                 degtheta -= 180;
             }
-            
-            GameObject currentArrow = Instantiate(arrow, transform.position, Quaternion.Euler(0, 0, degtheta));
+
+            var projectileRotation = Quaternion.Euler(0, 0, degtheta);
+            Vector3 projectileDirection = new Vector2(t, u).normalized;
+
+            _projectileFactory.Create(arrow, transform.position, projectileRotation, projectileDirection);
         }
         
     }
