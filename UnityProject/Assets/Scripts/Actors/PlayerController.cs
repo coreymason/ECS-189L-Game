@@ -20,8 +20,8 @@ public class PlayerController : MonoBehaviour
     private string _moveState = "walking";
     private Vector3 _movementDirection;
     private Vector3 _lastMoveDirection;
-    private float _timer;
-    private float _dashCoolDown;
+    private float _timer = 0.0f;
+    private float _dashCoolDown = 0.0f;
     public Animator animator;
     
     [Inject]
@@ -36,8 +36,6 @@ public class PlayerController : MonoBehaviour
     {    
         rb = GetComponent<Rigidbody2D>();
         _signalBus.Fire(new CameraFollowTargetSignal() {Target = gameObject});
-        _timer = 0.0f;
-        _dashCoolDown = 0.0f;
     }
 
     private void FixedUpdate()
