@@ -11,14 +11,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject arrow;
     [SerializeField] private float moveSpeed = 2.0f;
     [SerializeField] private float dashSpeed = 4.0f;
-    [SerializeField] private float dashTime = 0.05f;
+    [SerializeField] private float dashTime = 0.2f;
+    [SerializeField] private float coolDown = 0.5f;
     
     private Rigidbody2D rb;
 
     private Vector3 _velocity; 
     private string _moveState = "walking";
     private Vector3 _movementDirection;
+    private Vector3 _lastMoveDirection;
     private float _timer;
+    private float _dashCoolDown;
     public Animator animator;
     
     [Inject]
@@ -33,6 +36,8 @@ public class PlayerController : MonoBehaviour
     {    
         rb = GetComponent<Rigidbody2D>();
         _signalBus.Fire(new CameraFollowTargetSignal() {Target = gameObject});
+        _timer = 0.0f;
+        _dashCoolDown = 0.0f;
     }
 
     private void FixedUpdate()
@@ -55,11 +60,14 @@ public class PlayerController : MonoBehaviour
             animator.SetFloat("speed_front",actualSpeed*_inputManager.Vertical);
             animator.SetFloat("speed_right",actualSpeed*_inputManager.Horizontal);
             _movementDirection = new Vector2(_inputManager.Horizontal, _inputManager.Vertical);
+            _movementDirection = _movementDirection.normalized;
             _velocity = _movementDirection * actualSpeed;
             rb.velocity = _velocity;
-            
-            if (_inputManager.Dash)
+            _lastMoveDirection = _movementDirection;
+            _dashCoolDown += Time.deltaTime;
+            if (_inputManager.Dash && _dashCoolDown >= coolDown)
             {
+                _dashCoolDown = 0.0f;
                 _moveState = "dashing";
             }
         }
@@ -69,12 +77,12 @@ public class PlayerController : MonoBehaviour
             animator.SetFloat("speed_front",actualSpeed*_movementDirection.y);
             animator.SetFloat("speed_right",actualSpeed*_movementDirection.x);
             _movementDirection = new Vector3(_inputManager.Horizontal, _inputManager.Vertical);
-            _velocity = _movementDirection * actualSpeed;
+            _velocity = _lastMoveDirection * actualSpeed;
             rb.velocity = _velocity;
             _timer += Time.deltaTime;
             
             if (_timer >= dashTime)
-            {
+            {    
                 _moveState = "walking";
                 _timer = 0.0f;
             }
