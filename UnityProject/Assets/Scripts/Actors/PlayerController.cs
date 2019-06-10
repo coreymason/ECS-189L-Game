@@ -53,9 +53,12 @@ public class PlayerController : MonoBehaviour
         Vector2 moveVelocity = new Vector2(_inputManager.Horizontal, _inputManager.Vertical);
         if (_moveState == "walking")
         {
+            Debug.Log("the speed front is at beginning" + animator.GetFloat("speed_front"));
             actualSpeed = moveSpeed;
             animator.SetFloat("speed_front",actualSpeed*_inputManager.Vertical);
             animator.SetFloat("speed_right",actualSpeed*_inputManager.Horizontal);
+            Debug.Log("the speed front is" + animator.GetFloat("speed_front"));
+            //Debug.Log(actualSpeed*_inputManager.Horizontal);
             _movementDirection = new Vector2(_inputManager.Horizontal, _inputManager.Vertical);
             _velocity = _movementDirection * actualSpeed;
             rb.velocity = _velocity;
