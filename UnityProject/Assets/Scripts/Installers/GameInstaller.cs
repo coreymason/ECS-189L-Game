@@ -4,6 +4,7 @@ using Zenject;
 public class GameInstaller : MonoInstaller
 {
     [SerializeField] public GameObject playerPrefab;
+    [SerializeField] public GameObject arrowPrefab;
     
     public override void InstallBindings()
     {
@@ -15,6 +16,8 @@ public class GameInstaller : MonoInstaller
         
         Container.BindFactory<Player, Player.Factory>().FromSubContainerResolve()
             .ByNewContextPrefab(playerPrefab).UnderTransformGroup("WorldManager/Players");
+        Container.BindFactory<UnityEngine.Object, Vector3, Quaternion, Vector2, Projectile, Projectile.Factory>()
+                .FromFactory<ProjectileFactory>();
 //        Container.BindFactory<Enemy, Enemy.Factory>().FromSubContainerResolve()
 //            .ByNewContextPrefab(enemyPrefab).UnderTransformGroup("WorldManager/EnemyManager");
 
@@ -30,6 +33,5 @@ public class GameInstaller : MonoInstaller
         Container.Bind<CameraRig>().FromComponentInHierarchy().AsSingle();
         Container.BindSignal<CameraFollowTargetSignal>()
             .ToMethod<CameraRig>(x => x.UpdateFollowTarget).FromResolve();
-
     }
 }

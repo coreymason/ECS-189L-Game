@@ -42,7 +42,6 @@ public class Player : MonoBehaviour, IHealth
         _signalBus.Fire(new PlayerHealthSignal() { Health = Health});
     }
 
-
     public class Factory : PlaceholderFactory<Player>
     {
     }
