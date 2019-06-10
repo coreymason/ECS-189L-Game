@@ -7,7 +7,7 @@ public class CrosshairController : MonoBehaviour
      private Player _player;
      private PlayerController _playerController;
  
-     [SerializeField] private float crosshairDistance = 0.5f;
+     [SerializeField] private float crosshairDistance = 1f;
      
      [Inject]
      private void Init(InputManager inputManager, Player player, PlayerController playerController)
