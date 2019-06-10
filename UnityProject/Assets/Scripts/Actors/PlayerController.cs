@@ -60,15 +60,13 @@ public class PlayerController : MonoBehaviour
             animator.SetFloat("speed_right",actualSpeed*_inputManager.Horizontal);
             _movementDirection = new Vector2(_inputManager.Horizontal, _inputManager.Vertical);
             
-            //If character is moving diagonally, multiply the speed vector by 0.7. Else the character will move at the normal speed * sqrt 2
-            if (_movementDirection.x != 0 && _movementDirection.y != 0)
-            {
-                _movementDirection = new Vector2(_movementDirection.x * 0.7f, _movementDirection.y * 0.7f);
-            }
-            //Last MoveDirection is stored for the dash direction 
+            // Ensure diagonal movement is not faster than single axis movement without impacting controllers
+            _movementDirection = Vector2.ClampMagnitude(_movementDirection, 1f);
+            
+            // Last MoveDirection is stored for the dash direction 
             _lastMoveDirection = _movementDirection;
             
-            _movementDirection = _movementDirection * actualSpeed;
+            _movementDirection *= actualSpeed;
             _rb.velocity = Vector3.SmoothDamp(_rb.velocity, _movementDirection, ref _velocity, velocitySmoothing);
             
             _dashCoolDown += Time.deltaTime;
