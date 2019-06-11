@@ -10,11 +10,11 @@ public class PlayerController : MonoBehaviour
     private Projectile.Factory _projectileFactory;
 
     [SerializeField] private GameObject arrow;
-    [SerializeField] private float moveSpeed = 2.0f;
-    [SerializeField] private float dashSpeed = 4.0f;
-    [SerializeField] private float dashTime = 0.2f;
-    [SerializeField] private float coolDown = 0.5f;
-    [Range(0, 1f)] [SerializeField] private float velocitySmoothing = 0.01f;
+    [SerializeField] private float moveSpeed = 4.7f;
+    [SerializeField] private float dashSpeed = 5.0f;
+    [SerializeField] private float dashTime = 0.02f;
+    [SerializeField] private float coolDown = 0.1f;
+    [Range(0, 1f)] [SerializeField] private float velocitySmoothing = 0.02f;
     
     private Rigidbody2D _rb;
     private Vector3 _velocity; 
