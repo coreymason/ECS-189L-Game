@@ -99,7 +99,9 @@ public class PlayerController : MonoBehaviour
             {
                 degtheta -= 180;
             }
-            //triggers different shooting animation
+            
+            // TODO: Refactor, the animator should handle directions based off movement
+            // Triggers different shooting animation
             if (t > 0)
             {
                 if (u > 0)
