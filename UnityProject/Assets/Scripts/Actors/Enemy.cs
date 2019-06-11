@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour, IHealth
         Health = maxHealth;
     }
     
-    public void Damage(float amount, float type)
+    public void Damage(float amount)
     {
         Health = Mathf.Max(0f, Health - amount);
     }

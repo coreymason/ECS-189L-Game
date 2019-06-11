@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float coolDown = 0.1f;
     [Range(0, 1f)] [SerializeField] private float velocitySmoothing = 0.02f;
     
-    private Rigidbody2D _rb;
+    private Rigidbody2D _rigidbody;
     private Vector3 _velocity; 
     private string _moveState = "walking";
     private Vector3 _movementDirection;
@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {    
         
-        _rb = GetComponent<Rigidbody2D>();
+        _rigidbody = GetComponent<Rigidbody2D>();
         _signalBus.Fire(new CameraFollowTargetSignal() {Target = gameObject});
     }
 
@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
             _lastMoveDirection = _movementDirection;
             
             _movementDirection *= actualSpeed;
-            _rb.velocity = Vector3.SmoothDamp(_rb.velocity, _movementDirection, ref _velocity, velocitySmoothing);
+            _rigidbody.velocity = Vector3.SmoothDamp(_rigidbody.velocity, _movementDirection, ref _velocity, velocitySmoothing);
             
             _dashCoolDown += Time.deltaTime;
             if (_inputManager.Dash && _dashCoolDown >= coolDown)
@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour
             animator.SetFloat("speed_right",actualSpeed*_movementDirection.x);
             _movementDirection = new Vector3(_inputManager.Horizontal, _inputManager.Vertical);
             _velocity = _lastMoveDirection * actualSpeed;
-            _rb.velocity = _velocity;
+            _rigidbody.velocity = _velocity;
             _timer += Time.deltaTime;
             
             if (_timer >= dashTime)
