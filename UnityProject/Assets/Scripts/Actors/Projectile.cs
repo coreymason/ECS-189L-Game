@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using Zenject;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class Projectile : MonoBehaviour
 {
     private Vector2 _projectileDirection;

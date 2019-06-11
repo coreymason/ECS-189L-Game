@@ -11,8 +11,6 @@ public class GameInstaller : MonoInstaller
         Container.Bind<AudioManager>().FromComponentInHierarchy().AsSingle();
         Container.Bind<WorldManager>().FromComponentInHierarchy().AsSingle();
         
-//        Container.Bind<Player>().FromComponentInHierarchy().WhenInjectedInto<PlayerController>();
-//        Container.Bind<Player>().FromComponentsInHierarchy().;
         
         Container.BindFactory<Player, Player.Factory>().FromSubContainerResolve()
             .ByNewContextPrefab(playerPrefab).UnderTransformGroup("WorldManager/Players");

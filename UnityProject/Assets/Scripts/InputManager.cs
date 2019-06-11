@@ -2,13 +2,6 @@
 
 public class InputManager : MonoBehaviour
 {
-    public enum InputSource
-    {
-        MKB,
-        Controller
-    }
-
-    public InputSource Source { get; private set; }
     public float Horizontal { get; private set; }
     public float Vertical { get; private set; }
     public Vector3 FirePosition { get; private set; }
@@ -20,7 +13,6 @@ public class InputManager : MonoBehaviour
 
     private void Start()
     {
-        Source = InputSource.MKB;
         Horizontal = 0f;
         Vertical = 0f;
         _fireHorizontal = 0f; 

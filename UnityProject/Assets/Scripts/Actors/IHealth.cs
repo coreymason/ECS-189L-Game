@@ -5,6 +5,6 @@ public interface IHealth
         get;
     }
     
-    void Damage(float amount, float type);
+    void Damage(float amount);
     void Heal(float amount);
 }
