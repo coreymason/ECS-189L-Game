@@ -99,6 +99,7 @@ public class PlayerController : MonoBehaviour
             {
                 degtheta -= 180;
             }
+            //triggers different shooting animation
             if (t > 0)
             {
                 if (u > 0)
