@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 5250485515276029637}
   - component: {fileID: 3056474770458149108}
   - component: {fileID: 4398329954242822565}
+  - component: {fileID: 1863139004414077701}
   m_Layer: 0
   m_Name: Enemycontroller
   m_TagString: Untagged
@@ -239,11 +240,32 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5037942527691790346}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 746bbe441ff8b944489614492de45fa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1863139004414077701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5037942527691790346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6011f0a265e01774eacc1c4a25c8f2c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewRadius: 4
+  viewAngle: 130
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 256
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 2048
+  foundTargets: []
 --- !u!1 &9032723763901148445
 GameObject:
   m_ObjectHideFlags: 0

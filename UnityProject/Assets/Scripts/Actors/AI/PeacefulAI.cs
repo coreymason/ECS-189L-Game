@@ -2,7 +2,7 @@ using Pathfinding;
 using UnityEngine;
 
 [RequireComponent(typeof(AIPath))]
-public class PeacefulAI : MonoBehaviour
+public abstract class PeacefulAI : MonoBehaviour
 {
     protected AIPath AiPath;
     

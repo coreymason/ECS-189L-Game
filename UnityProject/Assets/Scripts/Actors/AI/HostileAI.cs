@@ -3,7 +3,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(AIPath))]
 [RequireComponent(typeof(AIDestinationSetter))]
-public class HostileAI : MonoBehaviour
+public abstract class HostileAI : MonoBehaviour
 {
     protected AIPath AiPath;
     protected AIDestinationSetter AiDestinationSetter;
@@ -19,4 +19,6 @@ public class HostileAI : MonoBehaviour
     {
         Target = target;
     }
+
+    public abstract void UpdateAIPathSettings();
 }
