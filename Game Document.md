@@ -83,7 +83,9 @@ When we did the gameplay test, our game was a mostly incomplete sandbox.  This m
  
  
 ## Narrative Design
-oDocument how the narrative is present in the game via assets, gameplay systems, and gameplay.
+The narrative isn’t as present in the game itself but mostly as the structure for how we wanted the levels and game to feel. There were multiple scripts that I wrote [all of them are in this document](https://docs.google.com/document/d/1G5VIifMOCKPdOKMifcgeFreQN9btZF3v8ZFqbMRzS4s/edit?usp=sharing) NOTE: if the link doesn’t work, e-mail any one of the group members and let us know. 
+The main story that we picked was a simple concept of our parent banning us from playing video games on our PC. Growing up in a magical household, we should have known better than to sneak out and play it, but our mom put a spell on the computer! Now, as the player, we are trapped in the games as the protagonist. We thought it would give us flexibility on not only, in the future, if we wanted to make the story more in depth, but also mechanically for different level types and abilities. It also gave us more leeway on being able to make a sample level for one slice of the game as opposed to having a full Indie Game release with many levels. The other scripts were good concepts but were too long and also a little more serious than we felt like we could implement with the time and personalities that we have.
+
 ## Press Kit and Trailer
 [Press Kit](https://yellowsail.itch.io/nine-lives)
 [Trailer](https://youtu.be/3uD3xpNqNT0)
