@@ -103,7 +103,6 @@ public class Wander : PeacefulAI
     {
         if(_wanderTimer >= _wanderWaitTime)
         {
-            Debug.Log("big wander!");
             _ai.destination = PickBFSNode((int)wanderMaxDistance);
             _ai.SearchPath();
             
@@ -124,7 +123,6 @@ public class Wander : PeacefulAI
     {
         if(_miniWanderTimer >= _miniWanderWaitTime)
         {
-            Debug.Log("mini wander!");
             _ai.destination = PickRandomPoint(miniWanderMaxDistance);
             _ai.SearchPath();
             

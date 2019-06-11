@@ -6,7 +6,12 @@ public class ProjectileAttack : HostileAI
 
     public override void UpdateAIPathSettings()
     {
-        
+        AiPath.endReachedDistance = 6f;
+        AiDestinationSetter.target = Target.transform;
     }
 
+    private void Update()
+    {
+        
+    }
 }
