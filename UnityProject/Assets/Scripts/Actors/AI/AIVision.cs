@@ -36,7 +36,15 @@ public class AIVision : MonoBehaviour
         {
             angle -= transform.eulerAngles.z;
         }
-        return new Vector2(Mathf.Sin(angle * Mathf.Deg2Rad), Mathf.Cos(angle * Mathf.Deg2Rad));
+        
+        var direction = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
+
+        if (_enemyController != null && !_enemyController.IsMovingRight)
+        {
+            direction = Quaternion.Euler(0, -180, 0) * direction;
+        }
+
+        return direction;
     }
 
     private IEnumerator FindTargetsOnDelay(float delay)
@@ -64,7 +72,13 @@ public class AIVision : MonoBehaviour
         {
             Transform target = targetCollider.transform;
             Vector3 directionToTarget = (target.position - transform.position).normalized;
-            if (Vector2.Angle(transform.up, directionToTarget) < viewAngle / 2)
+            Vector3 directionFrom = transform.right;
+            if (!_enemyController.IsMovingRight)
+            {
+                directionFrom *= -1;
+            }
+
+            if (Vector2.Angle(directionFrom, directionToTarget) < viewAngle / 2)
             {
                 float distanceToTarget = Vector2.Distance(transform.position, target.position);
 
