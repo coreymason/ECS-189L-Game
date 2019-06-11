@@ -31,7 +31,7 @@ Overall: Most of my work was the base material that is needed for the game. As s
  
  
 ## Animation and Visuals
-For this game, Xuanchen designed and implemented a character design and animations of different states, including walking, fighting, dashing and idling. She visualized our idea by picking a main color and also designed the logo and UI of the game based on it. Her contribution also in the level design. By carefully adapting the doungoen asset, she successfully designed the map for the first level which is a dungeon room that fits our design purpose. 
+For this game, Xuanchen designed and implemented a character design and animations of different states, including walking, fighting, dashing and idling. She visualized our idea by picking a main color and also designed the logo and UI of the game based on it. Her contribution also in the level design. By carefully adapting the doungoen asset, she successfully designed the map for the first level which is a dungeon room that fits our design purpose. [Sprites used in game](https://github.com/coreymason/ECS-189L-Game/tree/master/UnityProject/Assets/Sprites)
 
 ## Input
 The game is able to be controlled through keyboard and controller. For the keyboard control, wasd or arrow keys are used for character movement, space is for dash, mouse for aiming and click for shooting. For the controller, the left joystick is responsible to the character movement, the right joystick is responsible for cross aiming while the dash and shooting is ZR and ZL. 
