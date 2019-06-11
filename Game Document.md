@@ -53,7 +53,7 @@ Enemy Artificial Intelligence:
 For AI, I forwent complex state machines and instead simplified the system into two key states -- a peaceful state and a hostile state. I then add one script of each type onto an enemy prefab in addition to a vision component that handles triggering the transition into [hostile state](https://github.com/coreymason/ECS-189L-Game/blob/f31c7a9d0fa1c024be97b927c282390a062ea148/UnityProject/Assets/Scripts/Actors/AI/HostileAI.cs#L6) upon sighting a player. As for how AI actually moves, I integrated the A Star Pathfinding Project (another library widely used in industry like Zenject), and then modify the a prefab’s base AIPath settings as well as target destination from code. In doing so, I can achieve some pretty straight forward AI code as seen in Wander and [RunAttack](https://github.com/coreymason/ECS-189L-Game/blob/f31c7a9d0fa1c024be97b927c282390a062ea148/UnityProject/Assets/Scripts/Actors/AI/RunAttack.cs#L7).
  
 Example in-game scene view (note the pathing in progress and field of view detection area)
-
+![alt text](https://lh5.googleusercontent.com/jtC5Og5iJxkJd7Y47cM0ALIGKHYrdzujDO-t5tzb8YhS67ZS8FGLiPc_DcPUzVSbTkngJpmEoScdu6ueRFTy58rT8to0ca8Vvgb9P8GR)
  
 Event System:
 Utilizing Zenject Signals (events), I can send events from anywhere in the codebase and then trigger a respective function call. I use this to simultaneously hookup and decouple UI, camera, and other future systems that would otherwise be coupled to game logic.
