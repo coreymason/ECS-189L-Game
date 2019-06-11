@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 3056474770458149108}
   - component: {fileID: 4398329954242822565}
   - component: {fileID: 1863139004414077701}
+  - component: {fileID: 1172594745788021254}
   m_Layer: 0
   m_Name: Enemycontroller
   m_TagString: Untagged
@@ -266,6 +267,25 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   foundTargets: []
+--- !u!95 &1172594745788021254
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5037942527691790346}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f51b4e8a561cb4e09ad9df89e439f653, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &9032723763901148445
 GameObject:
   m_ObjectHideFlags: 0
